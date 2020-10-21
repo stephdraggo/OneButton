@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
@@ -22,6 +20,8 @@ public class ScoreKeeper : MonoBehaviour
     #region Start
     void Start()
     {
+        Time.timeScale = 1;
+
         lives = maxLives; //reset lives
         score = 0; //reset score
 
@@ -86,8 +86,10 @@ public class ScoreKeeper : MonoBehaviour
     /// <param name="panel">win or lose panel</param>
     private void EndGame(GameObject panel)
     {
-        Time.timeScale = 0;
-        panel.SetActive(true);
+        Time.timeScale = 0; //stop time
+        panel.SetActive(true); //bring up panel
+
+        //choose end text
         loseText.text = "Too bad, you ran out of lives with a score of " + score.ToString() + "...";
         winText.text = "Congrats!! You achieved a score of " + score.ToString() + " and won!";
     }

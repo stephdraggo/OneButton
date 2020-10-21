@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
@@ -10,12 +8,13 @@ public class Enemy : MonoBehaviour
     [SerializeField] private ScoreKeeper scoreKeeper;
 
     [Header("Movement Variables")]
-    [SerializeField, Range(10, 50)] private int speed = 10;
+    [SerializeField, Range(10, 200)] private int speed = 10;
     [SerializeField] private Vector3 endPos;
     #endregion
     #region Start
     void Start()
     {
+        speed = Random.Range(1, 20) * (Screen.width / 50);//random speed calculated by screen size
         endPos = new Vector3(gameObject.transform.position.x, -100); //assign direction
         scoreKeeper = GameObject.Find("Script Holder").GetComponent<ScoreKeeper>(); //connect to main script
 
